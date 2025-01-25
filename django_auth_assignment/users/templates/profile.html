@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-center mb-4">Profile</h1>
+        
+        <div class="card shadow p-4 mb-3">
+            
+            <p><strong>Username:</strong> {{ username }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Date Joined:</strong> {{ date_joined }}</p>
+            <p><strong>Last Login:</strong> {{ last_login }}</p>
+        </div>
+
+        <div class="my-3">
+            <a href="{% url 'dashboard' %}" class="btn btn-primary w-100 mb-2">Back to Dashboard</a>
+        </div>
+
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
